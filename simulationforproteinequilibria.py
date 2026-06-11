@@ -51,15 +51,40 @@ st.markdown("""
 /* ── Global light theme ── */
 html, body,
 [data-testid="stAppViewContainer"],
-[data-testid="stApp"],
-[data-testid="stHeader"] {
+[data-testid="stApp"] {
     background-color: #f8f8f6 !important;
     color: #1a1a1a !important;
 }
+
+/* Fix header so top-right icons (Share, ⋮) are visible */
+[data-testid="stHeader"] {
+    background-color: #f8f8f6 !important;
+    border-bottom: 1px solid #e0e0e0 !important;
+}
+[data-testid="stHeader"] * {
+    color: #1a1a1a !important;
+}
+[data-testid="stHeader"] button,
+[data-testid="stHeader"] svg,
+[data-testid="stHeader"] svg path {
+    color: #333333 !important;
+    fill: #333333 !important;
+    stroke: #333333 !important;
+}
+[data-testid="stToolbar"] {
+    color: #333333 !important;
+}
+[data-testid="stToolbar"] button {
+    color: #333333 !important;
+}
+[data-testid="stToolbar"] svg path {
+    fill: #333333 !important;
+}
+
 .main .block-container {
     background-color: #f8f8f6 !important;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    padding-top: 2.5rem;
+    padding-bottom: 3rem;
     max-width: 960px;
 }
 
@@ -73,15 +98,17 @@ section[data-testid="stSidebar"] * {
 }
 section[data-testid="stSidebar"] hr {
     border-color: #3a3a3a !important;
-    margin: 8px 0 !important;
+    margin: 12px 0 !important;
 }
 section[data-testid="stSidebar"] [data-testid="stVerticalBlock"] {
-    gap: 4px !important;
+    gap: 2px !important;
 }
 section[data-testid="stSidebar"] .stMarkdown { margin-bottom: 0 !important; }
-section[data-testid="stSidebar"] .stSelectbox,
-section[data-testid="stSidebar"] .stNumberInput,
-section[data-testid="stSidebar"] .stSlider { margin-bottom: 0 !important; }
+
+/* Add breathing room between sidebar input groups */
+section[data-testid="stSidebar"] .stSelectbox  { margin-bottom: 6px !important; }
+section[data-testid="stSidebar"] .stNumberInput { margin-bottom: 8px !important; }
+section[data-testid="stSidebar"] .stSlider      { margin-bottom: 8px !important; }
 
 /* Sidebar section headers */
 .sidebar-section-label {
@@ -90,8 +117,9 @@ section[data-testid="stSidebar"] .stSlider { margin-bottom: 0 !important; }
     text-transform: uppercase;
     color: #888888 !important;
     font-weight: 600;
-    margin-bottom: 4px;
-    margin-top: 2px;
+    margin-bottom: 6px;
+    margin-top: 4px;
+    display: block;
 }
 
 /* Sidebar inputs on dark bg */
@@ -121,7 +149,7 @@ section[data-testid="stSidebar"] [data-testid="stNumberInput"] button svg path {
 section[data-testid="stSidebar"] [data-testid="stNumberInput"] button:hover {
     background-color: #555 !important;
 }
-/* Slider track */
+/* Slider track labels */
 section[data-testid="stSidebar"] [data-testid="stSlider"] p,
 section[data-testid="stSidebar"] [data-testid="stSlider"] label,
 section[data-testid="stSidebar"] [data-testid="stSlider"] span {
@@ -148,11 +176,11 @@ div.stButton > button {
     color: #ffffff !important;
     font-weight: 600;
     border-radius: 6px;
-    padding: 0.5rem;
+    padding: 0.55rem;
     border: none !important;
     font-size: 0.9rem;
     letter-spacing: 0.03em;
-    margin-top: 6px;
+    margin-top: 10px;
     transition: background 0.15s;
 }
 div.stButton > button:hover  { background-color: #005a8e !important; }
@@ -165,9 +193,9 @@ div.stButton > button:active { background-color: #004470 !important; }
     font-weight: 500;
     border: 1.5px solid #0072b2 !important;
     border-radius: 6px;
-    padding: 0.35rem 0.9rem;
+    padding: 0.4rem 1rem;
     font-size: 0.85rem;
-    margin-top: 4px;
+    margin-top: 6px;
 }
 [data-testid="stDownloadButton"] > button:hover {
     background-color: #0072b2 !important;
@@ -175,46 +203,31 @@ div.stButton > button:active { background-color: #004470 !important; }
 }
 
 /* ── Page header ── */
+.page-header {
+    margin-bottom: 1.6rem;
+}
 .page-title {
     font-size: 1.55rem;
     font-weight: 700;
     color: #111111 !important;
     letter-spacing: -0.01em;
     line-height: 1.25;
-    margin-bottom: 2px;
+    margin-bottom: 4px;
+}
+.page-byline {
+    font-size: 0.72rem;
+    color: #999999 !important;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 4px;
 }
 .page-subtitle {
-    font-size: 0.9rem;
+    font-size: 0.92rem;
     color: #777777 !important;
     font-style: italic;
-    margin-bottom: 1rem;
+    margin-bottom: 0;
     font-weight: 400;
-}
-
-/* ── Equation banner ── */
-.eq-banner {
-    background: #ffffff;
-    border: 1px solid #e0e0e0;
-    border-left: 3px solid #0072b2;
-    border-radius: 6px;
-    padding: 0.55rem 1rem;
-    margin-bottom: 1rem;
-    font-size: 1.0rem;
-    color: #1a1a1a !important;
-    font-family: "Georgia", serif;
-    display: flex;
-    align-items: baseline;
-    gap: 1.5rem;
-}
-.eq-banner .eq-label {
-    font-size: 0.65rem;
-    font-family: sans-serif;
-    color: #0072b2 !important;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-weight: 700;
-    white-space: nowrap;
-    flex-shrink: 0;
 }
 
 /* ── Main area text ── */
@@ -229,6 +242,12 @@ p, span, label, div, h1, h2, h3, h4, h5, h6,
 
 /* ── Spinner ── */
 [data-testid="stSpinner"] * { color: #0072b2 !important; }
+
+/* ── Plot container spacing ── */
+[data-testid="stImage"], .stPyplot {
+    margin-top: 0.5rem;
+    margin-bottom: 0.75rem;
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -386,14 +405,14 @@ EQ_LABELS = {
 with st.sidebar:
     st.markdown(
         "<div style='font-size:1.05rem; font-weight:700; color:#ffffff !important;"
-        " letter-spacing:-0.01em; padding: 4px 0 2px 0;'>FCS Simulator</div>"
-        "<div style='font-size:0.72rem; color:#999 !important; margin-bottom:6px;'>"
+        " letter-spacing:-0.01em; padding: 8px 0 3px 0;'>FCS Simulator</div>"
+        "<div style='font-size:0.72rem; color:#999 !important; margin-bottom:10px;'>"
         "Oligomerization equilibria</div>",
         unsafe_allow_html=True,
     )
     st.divider()
 
-    st.markdown("<div class='sidebar-section-label'>Equilibrium model</div>",
+    st.markdown("<span class='sidebar-section-label'>Equilibrium model</span>",
                 unsafe_allow_html=True)
     model_label = st.selectbox(
         "model", list(EQ_LABELS.values()), label_visibility="collapsed"
@@ -401,37 +420,75 @@ with st.sidebar:
     model = [k for k, v in EQ_LABELS.items() if v == model_label][0]
 
     st.divider()
-    st.markdown("<div class='sidebar-section-label'>Model parameters</div>",
+    st.markdown("<span class='sidebar-section-label'>Model parameters</span>",
                 unsafe_allow_html=True)
 
     if model == "Tetramer":
-        KD1 = st.number_input("Kd1 — dimer→tetramer (nM)",
-                               min_value=1e-6, max_value=1e9, value=100.0,
-                               step=10.0, format="%.4g")
-        KD2 = st.number_input("Kd2 — monomer→dimer (nM)",
-                               min_value=1e-6, max_value=1e9, value=500.0,
-                               step=10.0, format="%.4g")
+        # Use HTML labels with proper subscripts via markdown
+        st.markdown(
+            "<div style='font-size:0.85rem; color:#cccccc !important; margin-bottom:2px;'>"
+            "K<sub>d1</sub> — dimer→tetramer (nM)</div>",
+            unsafe_allow_html=True,
+        )
+        KD1 = st.number_input(
+            "Kd1", label_visibility="collapsed",
+            min_value=1e-6, max_value=1e9, value=100.0, step=10.0, format="%.4g"
+        )
+        st.markdown(
+            "<div style='font-size:0.85rem; color:#cccccc !important; margin-bottom:2px;'>"
+            "K<sub>d2</sub> — monomer→dimer (nM)</div>",
+            unsafe_allow_html=True,
+        )
+        KD2 = st.number_input(
+            "Kd2", label_visibility="collapsed",
+            min_value=1e-6, max_value=1e9, value=500.0, step=10.0, format="%.4g"
+        )
     else:
-        KD1 = st.number_input("Kd (nM)", min_value=1e-6, max_value=1e9,
-                               value=100.0, step=10.0, format="%.4g")
+        st.markdown(
+            "<div style='font-size:0.85rem; color:#cccccc !important; margin-bottom:2px;'>"
+            "K<sub>d</sub> (nM)</div>",
+            unsafe_allow_html=True,
+        )
+        KD1 = st.number_input(
+            "Kd", label_visibility="collapsed",
+            min_value=1e-6, max_value=1e9, value=100.0, step=10.0, format="%.4g"
+        )
         KD2 = None
 
     f = st.slider("Labelling efficiency  f", 0.0, 1.0, 0.5, 0.01)
 
-    C_l = st.number_input("Labeled concentration CL (nM)",
-                           min_value=0.0, max_value=1e6, value=1.0,
-                           step=0.1, format="%.4g")
+    st.markdown(
+        "<div style='font-size:0.85rem; color:#cccccc !important; margin-bottom:2px;'>"
+        "Labeled concentration C<sub>L</sub> (nM)</div>",
+        unsafe_allow_html=True,
+    )
+    C_l = st.number_input(
+        "CL", label_visibility="collapsed",
+        min_value=0.0, max_value=1e6, value=1.0, step=0.1, format="%.4g"
+    )
 
     st.divider()
-    st.markdown("<div class='sidebar-section-label'>Concentration range (nM)</div>",
+    st.markdown("<span class='sidebar-section-label'>Protein concentration range (nM)</span>",
                 unsafe_allow_html=True)
     col_lo, col_hi = st.columns(2)
     with col_lo:
-        c_min = st.number_input("Min", min_value=1e-6, max_value=1e6,
-                                 value=1.0, step=1.0, format="%.4g")
+        st.markdown(
+            "<div style='font-size:0.78rem; color:#aaaaaa !important; margin-bottom:1px;'>Min</div>",
+            unsafe_allow_html=True,
+        )
+        c_min = st.number_input(
+            "Min", label_visibility="collapsed",
+            min_value=1e-6, max_value=1e6, value=1.0, step=1.0, format="%.4g"
+        )
     with col_hi:
-        c_max = st.number_input("Max", min_value=1e-6, max_value=1e9,
-                                 value=1000.0, step=100.0, format="%.4g")
+        st.markdown(
+            "<div style='font-size:0.78rem; color:#aaaaaa !important; margin-bottom:1px;'>Max</div>",
+            unsafe_allow_html=True,
+        )
+        c_max = st.number_input(
+            "Max", label_visibility="collapsed",
+            min_value=1e-6, max_value=1e9, value=1000.0, step=100.0, format="%.4g"
+        )
 
     st.divider()
     run_btn = st.button("▶  Run simulation", use_container_width=True)
@@ -443,22 +500,13 @@ EQ_SUBTITLES = {
     "Trimer":   "Trimer ⇌ Monomer equilibrium",
     "Tetramer": "Tetramer ⇌ Dimer ⇌ Monomer equilibrium",
 }
-EQ_HTML = {
-    "Dimer":    "2 M &nbsp;⇌&nbsp; D &emsp; &emsp; K<sub>d</sub> = [M]² / [D]",
-    "Trimer":   "3 M &nbsp;⇌&nbsp; T₃ &emsp; &emsp; K<sub>d</sub> = [M]³ / [T₃]",
-    "Tetramer": "2 M &nbsp;⇌&nbsp; D &emsp;⇌&emsp; T₄ &emsp; &emsp;"
-                "K<sub>d2</sub> = [M]² / [D] &ensp; K<sub>d1</sub> = [D]² / [T₄]",
-}
 
 st.markdown(
+    "<div class='page-header'>"
     "<div class='page-title'>Protein Oligomerization Equilibria</div>"
-    "<div style='font-size:0.78rem; color:#999 !important; letter-spacing:0.04em;"
-    " text-transform: uppercase; font-weight:500; margin-bottom:2px;'>"
-    "by Fluorescence Correlation Spectroscopy</div>",
-    unsafe_allow_html=True,
-)
-st.markdown(
-    f"<div class='page-subtitle'>{EQ_SUBTITLES[model]}</div>",
+    "<div class='page-byline'>by Fluorescence Correlation Spectroscopy</div>"
+    f"<div class='page-subtitle'>{EQ_SUBTITLES.get(model, '')}</div>"
+    "</div>",
     unsafe_allow_html=True,
 )
 
@@ -492,15 +540,6 @@ if run_btn or "last_result" not in st.session_state:
 
 res = st.session_state["last_result"]
 C, tau, species = res["C"], res["tau"], res["species"]
-
-# Equation banner
-st.markdown(
-    f'<div class="eq-banner">'
-    f'  <span class="eq-label">Active equilibrium</span>'
-    f'  <span>{EQ_HTML[res["model"]]}</span>'
-    f'</div>',
-    unsafe_allow_html=True,
-)
 
 # Plot
 fig = make_figure(C, tau, species, res["model"])
