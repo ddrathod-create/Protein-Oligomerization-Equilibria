@@ -112,18 +112,11 @@ button[aria-label*="Collapse"] {
     border: none !important;
 }
 
-/* ── Hide deploy button (white square) and unwanted toolbar buttons ── */
+/* ── Hide deploy button (white square) only ── */
 [data-testid="stAppDeployButton"],
 [data-testid="stAppDeployButton"] *,
 [data-testid="stDeployButton"],
-[data-testid="stToolbarActions"] button[aria-label="Print app"],
-[data-testid="stToolbarActions"] button[aria-label="Toggle theme"],
-[data-testid="stToolbarActions"] button[aria-label="Open settings"],
-[data-testid="stToolbarActions"] button[title="Print app"],
-[data-testid="stToolbarActions"] button[title="Toggle theme"],
-[data-testid="stToolbarActions"] button[title="Settings"],
-[data-testid="stToolbarActions"] button[title="Print"],
-[data-testid="stToolbarActions"] button:last-child {
+[data-testid="stDeployButton"] * {
     display: none !important;
     visibility: hidden !important;
     width: 0 !important;
