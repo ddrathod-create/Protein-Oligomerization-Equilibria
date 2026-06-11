@@ -5,7 +5,7 @@ Created on Wed Jun 10 11:27:19 2026
 @author: Dhanashri
 """
 """
-FCS Oligomerization Simulator — Streamlit version
+FCS Oligomerization Simulator
 """
 
 import numpy as np
@@ -26,19 +26,19 @@ C_TRIMER = "#cc79a7"
 C_TETRA  = "#009e73"
 
 PLOT_RC = {
-    "axes.facecolor":   "#1a1a2e",
-    "figure.facecolor": "#1a1a2e",
-    "axes.edgecolor":   "#3a3a5c",
+    "axes.facecolor":   "#1e2a42",
+    "figure.facecolor": "#1a2236",
+    "axes.edgecolor":   "#4a4a6c",
     "axes.labelcolor":  "#cccccc",
     "axes.grid":        True,
-    "grid.color":       "#2a2a4a",
+    "grid.color":       "#2e3a54",
     "grid.linestyle":   "--",
     "grid.linewidth":   0.5,
     "xtick.color":      "#aaaaaa",
     "ytick.color":      "#aaaaaa",
     "text.color":       "#dddddd",
-    "legend.facecolor": "#16213e",
-    "legend.edgecolor": "#3a3a5c",
+    "legend.facecolor": "#1e2a42",
+    "legend.edgecolor": "#4a4a6c",
     "legend.fontsize":  9,
     "font.size":        10,
     "axes.titlesize":   11,
@@ -377,16 +377,16 @@ def run_simulation(model, KD, f, C_l, c_min, c_max, KD2=None, N=200):
 
 def make_figure(C, tau, species, model):
     species_colors = {
-        "Monomer":  "#7eb8f7",
-        "Dimer":    "#f5c842",
-        "Trimer":   "#e085c8",
-        "Tetramer": "#50d9a0",
+        "Monomer":  "#56b4e9",
+        "Dimer":    "#e69f00",
+        "Trimer":   "#cc79a7",
+        "Tetramer": "#009e73",
     }
     n_map = {"Dimer": 2, "Trimer": 3, "Tetramer": 4}
     n = n_map[model]
 
     with plt.rc_context(PLOT_RC):
-        fig = plt.figure(figsize=(8.5, 6.5), facecolor="#1a1a2e")
+        fig = plt.figure(figsize=(8.5, 6.5), facecolor="#1a2236")
         gs = fig.add_gridspec(
             2, 1, height_ratios=[1.15, 1],
             hspace=0.58, top=0.88, bottom=0.10, left=0.11, right=0.96,
@@ -395,7 +395,7 @@ def make_figure(C, tau, species, model):
         ax_frac = fig.add_subplot(gs[1])
 
         def style_ax(ax):
-            ax.set_facecolor("#1a1a2e")
+            ax.set_facecolor("#1e2a42")
             ax.tick_params(labelsize=9)
             for sp in ax.spines.values():
                 sp.set_color("#3a3a5c")
@@ -514,7 +514,7 @@ with st.sidebar:
                            min_value=0.0, max_value=1e6, value=1.0, step=0.1, format="%.4g")
 
     st.divider()
-    st.markdown("<span class='sidebar-label'>Protein Concentration Range (nM)</span>",
+    st.markdown("<span class='sidebar-label'>Protein Concentration Range (<span style='text-transform:none;'>nM</span>)</span>",
                 unsafe_allow_html=True)
     col_lo, col_hi = st.columns(2)
     with col_lo:
