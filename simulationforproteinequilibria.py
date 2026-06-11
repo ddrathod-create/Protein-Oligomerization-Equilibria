@@ -2,7 +2,6 @@
 """
 Created on Wed Jun 10 11:27:19 2026
 
-@author: Dhanashri
 """
 """
 FCS Oligomerization Simulator
@@ -26,19 +25,19 @@ C_TRIMER = "#cc79a7"
 C_TETRA  = "#009e73"
 
 PLOT_RC = {
-    "axes.facecolor":   "#1e2a42",
-    "figure.facecolor": "#1a2236",
-    "axes.edgecolor":   "#4a4a6c",
-    "axes.labelcolor":  "#cccccc",
+    "axes.facecolor":   "#1a1a2e",
+    "figure.facecolor": "#1a1a2e",
+    "axes.edgecolor":   "#3a3a5c",
+    "axes.labelcolor":  "#eeeeee",
     "axes.grid":        True,
-    "grid.color":       "#2e3a54",
+    "grid.color":       "#2a2a4a",
     "grid.linestyle":   "--",
     "grid.linewidth":   0.5,
-    "xtick.color":      "#aaaaaa",
-    "ytick.color":      "#aaaaaa",
-    "text.color":       "#dddddd",
-    "legend.facecolor": "#1e2a42",
-    "legend.edgecolor": "#4a4a6c",
+    "xtick.color":      "#dddddd",
+    "ytick.color":      "#dddddd",
+    "text.color":       "#ffffff",
+    "legend.facecolor": "#16213e",
+    "legend.edgecolor": "#3a3a5c",
     "legend.fontsize":  9,
     "font.size":        10,
     "axes.titlesize":   11,
@@ -386,7 +385,7 @@ def make_figure(C, tau, species, model):
     n = n_map[model]
 
     with plt.rc_context(PLOT_RC):
-        fig = plt.figure(figsize=(8.5, 6.5), facecolor="#1a2236")
+        fig = plt.figure(figsize=(8.5, 6.5), facecolor="#1a1a2e")
         gs = fig.add_gridspec(
             2, 1, height_ratios=[1.15, 1],
             hspace=0.58, top=0.88, bottom=0.10, left=0.11, right=0.96,
@@ -395,25 +394,25 @@ def make_figure(C, tau, species, model):
         ax_frac = fig.add_subplot(gs[1])
 
         def style_ax(ax):
-            ax.set_facecolor("#1e2a42")
+            ax.set_facecolor("#1a1a2e")
             ax.tick_params(labelsize=9)
             for sp in ax.spines.values():
-                sp.set_color("#3a3a5c")
+                sp.set_color("#5a5a7c")
                 sp.set_linewidth(0.8)
-            ax.grid(True, color="#252540", linewidth=0.6, linestyle="--")
+            ax.grid(True, color="#2a2a4a", linewidth=0.6, linestyle="--")
 
         # tau panel
         style_ax(ax_tau)
         ax_tau.plot(C, tau, color="#e040fb", linewidth=2.2, solid_capstyle="round")
         ax_tau.set_xscale("log")
         ax_tau.set_xlim(C[0], C[-1])
-        ax_tau.set_xlabel("Protein Concentration (nM)", color="#8888aa", fontsize=9, labelpad=4)
-        ax_tau.tick_params(axis="x", colors="#8888aa", labelsize=8)
+        ax_tau.set_xlabel("Protein Concentration (nM)", color="#ccccdd", fontsize=9, labelpad=4)
+        ax_tau.tick_params(axis="x", colors="#ccccdd", labelsize=8)
         ax_tau.xaxis.set_major_formatter(ticker.FuncFormatter(lambda v, _: f"{v:g}"))
-        ax_tau.set_ylabel(r"$\tau_\mathrm{app}\ /\ \tau_\mathrm{D}$", fontsize=9, labelpad=6, color="#cccccc")
+        ax_tau.set_ylabel(r"$\tau_\mathrm{app}\ /\ \tau_\mathrm{D}$", fontsize=9, labelpad=6, color="#eeeeee")
         tau_lo = max(0.0, tau.min() - 0.05)
         ax_tau.set_ylim(tau_lo, 1.05)
-        ax_tau.tick_params(axis="y", colors="#8888aa", labelsize=8)
+        ax_tau.tick_params(axis="y", colors="#ccccdd", labelsize=8)
 
         # twin top axis
         ax2x = ax_tau.twiny()
@@ -424,12 +423,12 @@ def make_figure(C, tau, species, model):
         base_ticks = [10**e for e in range(log_lo, log_hi + 1) if C[0] <= 10**e <= C[-1]]
         ax2x.set_xticks(base_ticks)
         ax2x.set_xticklabels([f"{v * n:g}" for v in base_ticks])
-        ax2x.set_xlabel(r"$C_0$ (total monomer, nM)", color="#c080e0", fontsize=8.5, labelpad=4)
-        ax2x.tick_params(axis="x", colors="#c080e0", labelsize=8)
-        ax2x.spines["top"].set_color("#c080e0")
+        ax2x.set_xlabel(r"$C_0$ (total monomer, nM)", color="#d9a0f0", fontsize=8.5, labelpad=4)
+        ax2x.tick_params(axis="x", colors="#d9a0f0", labelsize=8)
+        ax2x.spines["top"].set_color("#d9a0f0")
         ax2x.spines["top"].set_linewidth(1.0)
         for sp_name in ("bottom", "left", "right"):
-            ax2x.spines[sp_name].set_color("#3a3a5c")
+            ax2x.spines[sp_name].set_color("#5a5a7c")
 
         # fraction panel
         style_ax(ax_frac)
@@ -438,15 +437,15 @@ def make_figure(C, tau, species, model):
                          linewidth=2.0, label=name, solid_capstyle="round")
         ax_frac.set_xscale("log")
         ax_frac.set_xlim(C[0], C[-1])
-        ax_frac.set_xlabel("Protein Concentration (nM)", fontsize=9, labelpad=4, color="#8888aa")
-        ax_frac.tick_params(axis="x", labelsize=8, colors="#8888aa")
-        ax_frac.tick_params(axis="y", labelsize=8, colors="#8888aa")
+        ax_frac.set_xlabel("Protein Concentration (nM)", fontsize=9, labelpad=4, color="#ccccdd")
+        ax_frac.tick_params(axis="x", labelsize=8, colors="#ccccdd")
+        ax_frac.tick_params(axis="y", labelsize=8, colors="#ccccdd")
         ax_frac.xaxis.set_major_formatter(ticker.FuncFormatter(lambda v, _: f"{v:g}"))
-        ax_frac.set_ylabel("Fractional concentration  α", fontsize=9, labelpad=6, color="#cccccc")
+        ax_frac.set_ylabel("Fractional concentration  α", fontsize=9, labelpad=6, color="#eeeeee")
         ax_frac.set_ylim(-0.02, 1.05)
         ax_frac.set_yticks([0, 0.25, 0.5, 0.75, 1.0])
         ax_frac.legend(loc="center right", framealpha=0.85, fontsize=9,
-                       edgecolor="#3a3a5c", labelcolor="#dddddd")
+                       edgecolor="#3a3a5c", labelcolor="#ffffff")
 
     return fig
 
