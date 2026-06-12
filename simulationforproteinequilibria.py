@@ -316,9 +316,10 @@ def dimer_equilibria(C2, KD, f, C_l):
     tau_app = 0.5 * (c * (1 - r2) + np.sqrt(c**2 * (1 - r2)**2 + 4 * r2))
     return tau_app, alpha1, alpha2, np.zeros_like(alpha1), np.zeros_like(alpha1)
 
-def trimer_equilibria(C3, KD, f, C_l):
+def trimer_equilibria(C3, KDE, f, C_l):
     r3 = 0.69
     C = 3 * C3
+    KD = (3/4)*KDE**2
     a1 = 9 * C**4 * KD + np.sqrt(81 * C**8 * KD**2 + 4 * C**6 * KD**3)
     f1 = (2**(1/3) * KD) / (a1**(1/3))
     f2 = (a1**(1/3)) / (2**(1/3) * C**2)
