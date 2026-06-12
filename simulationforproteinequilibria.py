@@ -472,17 +472,17 @@ with st.sidebar:
 
     if model == "Tetramer":
         st.markdown(
-            "<span class='sidebar-input-label'>K<sub>d1</sub> — dimer→tetramer (nM)</span>",
+            "<span class='sidebar-input-label'>K<sub>d1</sub> (tetramer→dimer) (nM)</span>",
             unsafe_allow_html=True,
         )
         KD1 = st.number_input("Kd1", label_visibility="collapsed",
-                               min_value=1e-6, max_value=1e9, value=200.0, step=10.0, format="%.4g")
+                               min_value=1e-6, max_value=1e9, value=10.0, step=10.0, format="%.4g")
         st.markdown(
-            "<span class='sidebar-input-label'>K<sub>d2</sub> — monomer→dimer (nM)</span>",
+            "<span class='sidebar-input-label'>K<sub>d2</sub> (dimer→monomer) (nM)</span>",
             unsafe_allow_html=True,
         )
         KD2 = st.number_input("Kd2", label_visibility="collapsed",
-                               min_value=1e-6, max_value=1e9, value=20.0, step=10.0, format="%.4g")
+                               min_value=1e-6, max_value=1e9, value=1.0, step=10.0, format="%.4g")
     else:
         st.markdown(
             "<span class='sidebar-input-label'>K<sub>d</sub> (nM)</span>",
