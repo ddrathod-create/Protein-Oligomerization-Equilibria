@@ -12,7 +12,7 @@ import matplotlib.ticker as ticker
 import pandas as pd
 
 st.set_page_config(
-    page_title="FCS Oligomerization Simulator",
+    page_title="Protein Oligomerization Simulator",
     page_icon="🔬",
     layout="wide",
 )
@@ -524,8 +524,8 @@ with st.sidebar:
 st.markdown(
     "<div class='page-header'>"
     "<span class='page-icon'>🔬</span>"
-    "<span class='page-title'>FCS Oligomerization Simulator</span>"
-    "</div>",
+    "<span class='page-title'>Protein Oligomerization Simulator</span>"
+    "<div class='page-subtitle'>FCS-based simulation of oligomer equilibria</div>",
     unsafe_allow_html=True,
 )
 
