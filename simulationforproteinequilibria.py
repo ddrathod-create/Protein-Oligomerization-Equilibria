@@ -198,20 +198,21 @@ li[role="option"][aria-selected="true"] {
     display: block;
     font-family: 'Plus Jakarta Sans', sans-serif !important;
 }
-/* ── Parameter input labels — bigger & clearer ── */
+/* ── Parameter input labels ── */
 .sidebar-input-label {
-    font-size: 0.95rem !important;
-    font-weight: 600 !important;
-    color: #d0d0e8 !important;
+    font-size: 0.92rem !important;
+    font-weight: 400 !important;
+    color: #a0a0c8 !important;
     display: block;
     font-family: 'Plus Jakarta Sans', sans-serif !important;
-    line-height: 1.3;
+    line-height: 1.4;
+    letter-spacing: 0.01em;
 }
 .label-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 3px;
+    margin-bottom: 1px;
 }
 .help-icon {
     display: inline-flex;
