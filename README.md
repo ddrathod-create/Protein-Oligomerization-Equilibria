@@ -27,19 +27,19 @@ This webapp is based on the `proteinequilibriafn.py` file, maintaining all the o
 **Dimer-Monomer**
 
 ```
-D ⇌ 2M        (K_d)
+D ⇌ 2M        (Kd)
 ```
 
 **Trimer-Monomer**
 
 ```
-T ⇌ 3M        (K_d)
+T ⇌ 3M        (Kd)
 ```
 
 **Tetramer-Dimer-Monomer**
 
 ```
-T₄ ⇌ 2D ⇌ 4M        (K_d1 for T₄→D step, K_d2 for D→M step)
+T₄ ⇌ 2D ⇌ 4M        (Kd1 for T₄→D , Kd2 for D→M )
 ```
 
 ---
