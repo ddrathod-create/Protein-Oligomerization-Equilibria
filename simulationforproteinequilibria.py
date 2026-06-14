@@ -150,7 +150,7 @@ section[data-testid="stSidebar"] input {
     color: #e0e0e0 !important;
     border: 1px solid #3a3a5c !important;
     border-radius: 6px !important;
-    font-size: 0.82rem !important;
+    font-size: 0.84rem !important;
     padding: 0.55rem 0.6rem !important;
 }
 /* ── Selectbox outer container ── */
@@ -202,7 +202,7 @@ section[data-testid="stSidebar"] .stMarkdown {
 }
 /* Pull number inputs up tight after their label */
 section[data-testid="stSidebar"] .stNumberInput {
-    margin-top: -6px !important;
+    margin-top: -2px !important;
     margin-bottom: 10px !important;
 }
 
@@ -232,14 +232,14 @@ li[role="option"][aria-selected="true"] {
 }
 /* ── Parameter input labels ── */
 .sidebar-input-label {
-    font-size: 0.88rem !important;
+    font-size: 0.9rem !important;
     font-weight: 400 !important;
     color: #a0a0c8 !important;
     display: block;
     font-family: 'Plus Jakarta Sans', sans-serif !important;
     line-height: 1.4;
     letter-spacing: 0.01em;
-    margin-bottom: 0px !important;
+    margin-bottom: 5px !important;
 }
 .label-row {
     display: flex;
