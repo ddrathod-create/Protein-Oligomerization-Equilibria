@@ -12,7 +12,7 @@ FCS measures fluorescence intensity fluctuations as labeled molecules diffuse th
  
 A key complication is that the autocorrelation decay of a mixture of oligomeric species is experimentally indistinguishable from that of a single species. The measured quantity is therefore an apparent diffusion time (τₐₚₚ) that reflects the weighted average of all species present, where the weighting depends on both the concentrations and relative brightnesses of each species. Because larger oligomers carry more fluorescent labels and contribute more strongly to the autocorrelation signal, simple intuitive interpretations of τₐₚₚ can be seriously misleading without a proper mathematical framework.
  
-This tool is based on a rigorous mathematical treatment that establishes analytical relationships between the experimentally measured τₐₚₚ values and the thermodynamic parameters governing protein oligomerization, including dissociation equilibrium constants for three different oligomerization cases: dimer-monomer, trimer-monomer and tetramer-dimer-monomer. It computes the predicted **normalized apparent diffusion time** τₙ = τₐₚₚ / τₘ as a function of total protein concentration, given user-specified dissociation constants (Kd) and experimental parameters, where τₘ is the diffusion time of the intact oligomeric species of stoichiometry m.
+This tool is based on a rigorous mathematical treatment that establishes analytical relationships between the experimentally measured τₐₚₚ values and the thermodynamic parameters governing protein oligomerization, including dissociation equilibrium constants for three different oligomerization cases: dimer-monomer, trimer-monomer and tetramer-dimer-monomer [1,2]. It computes the predicted **normalized apparent diffusion time** τₙ = τₐₚₚ / τₘ as a function of total protein concentration, given user-specified dissociation constants (Kd) and experimental parameters, where τₘ is the diffusion time of the intact oligomeric species of stoichiometry m.
 
 ---
 
@@ -83,8 +83,8 @@ The app will open automatically in your browser at `http://localhost:8501`.
 1. Select an **equilibrium model** from the sidebar dropdown.
 2. Enter the dissociation constant(s) and experimental parameters (*f*, CL).
 3. Set the **concentration range** to match the span of your titration experiment.
-4. Click ** Run Simulation** to update the plots.
-5. Use ** Download CSV** to export the simulated curves for plotting or fitting in your analysis software of choice.
+4. Click **Run Simulation** to update the plots.
+5. Use **Download CSV** to export the simulated curves.
 
 > **Tip:** The plots auto-refresh when you switch equilibrium models. For all other parameter changes, click *Run Simulation* to apply.
 
@@ -92,17 +92,17 @@ The app will open automatically in your browser at `http://localhost:8501`.
 
 ## References
 
-1. **[Author(s), Title, Journal, Year, DOI: placeholder]**
-
-2. Kanno, D. M., & Levitus, M. (2014). Protein oligomerization equilibria and kinetics investigated
+1. Kanno, D. M., & Levitus, M. (2014). Protein oligomerization equilibria and kinetics investigated
    by fluorescence correlation spectroscopy: A mathematical treatment.
    *The Journal of Physical Chemistry B*, 118(43), 12404–12415. https://doi.org/10.1021/jp507741r
+
+2. **[Author(s), Title, Journal, Year, DOI: placeholder]**
 
 ---
 
 ## Citation
 
-If you use this tool in your work, please cite reference [1] above.
+If you use this tool in your work, please cite reference [2] above.
 
 ---
 
