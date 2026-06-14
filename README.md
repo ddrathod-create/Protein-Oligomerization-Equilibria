@@ -1,4 +1,3 @@
-# Protein-Oligomerization-Equilibria
 # 🔬 Protein Oligomerization Simulator
 
 An interactive web tool for simulating fluorescence correlation spectroscopy (FCS) titration curves for three oligomerization equilibria: monomer–dimer, monomer–trimer, and monomer–dimer–tetramer.
@@ -23,21 +22,21 @@ This webapp is based on the `proteinequilibriafn.py` file, maintaining all the o
 
 ---
 
-## The Three Equilibrium Cases
+## Equilibria Cases
 
-**Monomer–Dimer**: monomer fraction solved in closed form:
+**Dimer-Monomer**
 
 ```
 D ⇌ 2M        (K_d)
 ```
 
-**Monomer–Trimer**: monomer fraction from roots of a cubic equation; Kd here is an effective dissociation constant derived from a per-step equilibrium constant Kd,E:
+**Trimer-Monomer**
 
 ```
-T ⇌ 3M        (K_d,eff)
+T ⇌ 3M        (K_d)
 ```
 
-**Monomer–Dimer–Tetramer**: sequential two-step assembly via a dimeric intermediate; species fractions from roots of a quartic, apparent diffusion time from roots of a cubic:
+**Tetramer-Dimer-Monomer**
 
 ```
 T₄ ⇌ 2D ⇌ 4M        (K_d1 for T₄→D step, K_d2 for D→M step)
@@ -49,17 +48,17 @@ T₄ ⇌ 2D ⇌ 4M        (K_d1 for T₄→D step, K_d2 for D→M step)
 
 | Parameter | Description |
 |-----------|-------------|
-| Kd | Dissociation constant for the monomer–oligomer equilibrium (nM); for the trimer case this is an effective Kd derived from a per-step equilibrium constant Kd,E |
+| Kd | Dissociation constant for the monomer–oligomer equilibrium (nM); for the trimer case this is an effective Kd in nM units|
 | Kd1 | Dissociation constant for the dimer-to-tetramer step (nM) |
 | Kd2 | Dissociation constant for the monomer-to-dimer step (nM) |
 | *f* | Labeling efficiency (fraction of molecules carrying a fluorescent label) |
 | CL | Concentration of labeled protein in terms of the highest oligomer (nM) |
-| Conc. range | Total protein concentration range for the simulation (nM) |
+| Conc. range | Total protein concentration in terms of the highest oligomer range for the simulation (nM) |
 
 The tool outputs:
 - **Upper panel:** τₐₚₚ / τₘ vs. protein concentration (log scale), with a secondary *x*-axis showing total monomer concentration
-- **Lower panel:** Fractional species concentrations (α_monomer, α_dimer, α_trimer, or α_tetramer) vs. protein concentration
-- **CSV download:** All plotted values for downstream analysis
+- **Lower panel:** Fractional species concentrations vs. protein concentration
+- **CSV download:** All plotted values in a .csv file 
 
 ---
  
