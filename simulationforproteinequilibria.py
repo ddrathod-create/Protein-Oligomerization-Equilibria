@@ -507,7 +507,7 @@ with st.sidebar:
                 unsafe_allow_html=True,
             )
             KD1 = st.number_input("Kd1", label_visibility="collapsed",
-                                   min_value=1e-6, max_value=1e9, value=100.0, step=10.0, format="%.4g")
+                                   min_value=1e-6, max_value=1e9, value=1.0, step=10.0, format="%.4g")
         with col_kd2:
             st.markdown(
                 "<div class='label-row'><span class='sidebar-input-label'>K<sub>d2</sub> (nM)</span>"
@@ -515,7 +515,7 @@ with st.sidebar:
                 unsafe_allow_html=True,
             )
             KD2 = st.number_input("Kd2", label_visibility="collapsed",
-                                   min_value=1e-6, max_value=1e9, value=500.0, step=10.0, format="%.4g")
+                                   min_value=1e-6, max_value=1e9, value=1000.0, step=10.0, format="%.4g")
     else:
         st.markdown(
             "<div class='label-row'><span class='sidebar-input-label'>K<sub>d</sub> (nM)</span>"
