@@ -701,7 +701,7 @@ with st.sidebar:
 # ── Main area ─────────────────────────────────────────────────────────────────────
 st.markdown(
     "<div class='page-header'>"
-    "<span class='page-icon'>🔬</span>"
+    "<span class='page-icon'>confocal-vol.png</span>"
     "<span class='page-title'>FCS-Protein Oligomerization Simulator</span>"
     "<div class='page-subtitle'>FCS-based simulation of oligomer equilibria</div>"
     "</div>",
