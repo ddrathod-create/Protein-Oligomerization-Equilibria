@@ -33,7 +33,7 @@ $$
 **2) trimer ($T_3$)-monomer ($M$)**
 
 $$
-T_3\rightleftharpoons 3M \qquad\qquad K_d=\dfrac{[M]^3}{[T_3]}\, ,\qquad\qquad K_d^{E} = \dfrac{2}{\sqrt{3}}\sqrt{K_d}
+T_3\rightleftharpoons 3M \qquad\qquad K_d=\dfrac{[M]^3}{[T_3]}\\qquad\qquad K_d^{E} = \dfrac{2}{\sqrt{3}}\sqrt{K_d}
 $$
 
 **3) tetramer ($T_4$)-dimer ($D$)-monomer ($M$)**
@@ -43,7 +43,7 @@ T_4\rightleftharpoons 2D \qquad\qquad K_{d1}=\dfrac{[D]^2}{[T_4]}
 $$
 
 $$
-D\rightleftharpoons 2\M \qquad\qquad K_{d2}=\dfrac{[M]^2}{[D]}
+D\rightleftharpoons 2M \qquad\qquad K_{d2}=\dfrac{[M]^2}{[D]}
 $$
 
 ---
