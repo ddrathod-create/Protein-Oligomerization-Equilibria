@@ -275,10 +275,18 @@ section[data-testid="stSidebar"] .katex * {
 }
 section[data-testid="stSidebar"] .katex {
     font-size: 1.15rem !important;
+    line-height: 1.6 !important;
 }
 section[data-testid="stSidebar"] .katex-display {
     margin: 8px 0 14px 0 !important;
     text-align: left !important;
+    overflow-y: visible !important;
+    overflow-x: auto !important;
+    padding-top: 4px !important;
+}
+section[data-testid="stSidebar"] .katex-display > .katex,
+section[data-testid="stSidebar"] .katex-display > .katex > .katex-html {
+    overflow: visible !important;
 }
 
 section[data-testid="stSidebar"] .element-container:has(> .stMarkdown .katex-display) + .element-container:has(> .stMarkdown .katex-display) {
