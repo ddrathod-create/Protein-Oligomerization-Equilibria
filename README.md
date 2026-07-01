@@ -1,6 +1,6 @@
 # 🔬 Protein Oligomerization Simulator
 
-An interactive web tool for simulating fluorescence correlation spectroscopy (FCS) titration curves for three oligomerization equilibria: monomer–dimer, monomer–trimer, and monomer–dimer–tetramer.
+An interactive web tool for simulating fluorescence correlation spectroscopy (FCS) titration curves for three oligomerization equilibria: dimer-monomer, trimer-monomer, and tetramer-dimer-monomer.
 
 > *This tool is intended to facilitate the implementation of quantitative FCS-based oligomerization studies and to promote the use of physically accurate binding models over empirical approximations that may result in inaccurate or misleading parameter estimates.*
 
@@ -8,11 +8,11 @@ An interactive web tool for simulating fluorescence correlation spectroscopy (FC
 
 ## Overview
 
-FCS measures fluorescence intensity fluctuations as labeled molecules diffuse through a femtoliter-sized confocal observation volume. The temporal behavior of these fluctuations, captured by the autocorrelation function, encodes the translational diffusion coefficients of the fluorescent species in the sample. Since the diffusion coefficient of a globular protein scales approximately with the cube root of its molecular mass, FCS can, in principle, distinguish between oligomeric states and report on the degree of dissociation as a function of concentration.
- 
+FCS measures fluctuations in fluorescence intensity as labeled molecules diffuse through a femtoliter-sized confocal observation volume. The temporal behavior of these fluctuations, captured by the autocorrelation function, encodes the translational diffusion coefficients of the fluorescent species in the sample. Since the diffusion coefficient of a globular protein scales approximately with the cube root of its molecular mass, FCS can, in principle, distinguish between oligomeric states and report on the degree of dissociation as a function of concentration.
+
 A key complication is that the autocorrelation decay of a mixture of oligomeric species is experimentally indistinguishable from that of a single species. The measured quantity is therefore an apparent diffusion time (τₐₚₚ) that reflects the weighted average of all species present, where the weighting depends on both the concentrations and relative brightnesses of each species. Because larger oligomers carry more fluorescent labels and contribute more strongly to the autocorrelation signal, simple intuitive interpretations of τₐₚₚ can be seriously misleading without a proper mathematical framework.
- 
-This tool is based on a rigorous mathematical treatment that establishes analytical relationships between the experimentally measured τₐₚₚ values and the thermodynamic parameters governing protein oligomerization, including dissociation equilibrium constants for three different oligomerization cases: dimer-monomer, trimer-monomer and tetramer-dimer-monomer [1,2]. It computes the predicted **normalized apparent diffusion time** τₙ = τₐₚₚ / τₘ as a function of total protein concentration, given user-specified dissociation constants (Kd) and experimental parameters, where τₘ is the diffusion time of the intact oligomeric species of stoichiometry m.
+
+This tool is based on a rigorous mathematical treatment that establishes analytical relationships between the experimentally measured τₐₚₚ values and the thermodynamic parameters governing protein oligomerization, including dissociation equilibrium constants for three different oligomerization cases: dimer-monomer, trimer-monomer, and tetramer-dimer-monomer [1]. It computes the predicted **normalized apparent diffusion time** τₙ = τₐₚₚ / τₘ as a function of total protein concentration, given user-specified dissociation constants (Kd) and experimental parameters, where τₘ is the diffusion time of the intact oligomeric species of stoichiometry m.
 
 ---
 
@@ -24,51 +24,39 @@ This webapp is based on the `proteinequilibriafn.py` file, maintaining all the o
 
 ## Equilibria Cases
 
-**dimer ($D$)-monomer ($M$)**
+**1) dimer ($D$)-monomer ($M$)**
 
-```
-D ⇌ 2M        (Kd)
-```
+$$
+D\rightleftharpoons 2\,M \qquad\qquad K_d=\dfrac{[M]^2}{[D]}
+$$
 
-**trimer ($T_3$)-monomer ($M$)**
+**2) trimer ($T_3$)-monomer ($M$)**
 
-```
-T ⇌ 3M        (Kd)
-```
+$$
+T_3\rightleftharpoons 3\,M \qquad\qquad K_d=\dfrac{[M]^3}{[T_3]}\, ,\qquad\qquad K_d^{E} = \dfrac{2}{\sqrt{3}}\sqrt{K_d}
+$$
 
-**tetramer ($T_4$)-dimer ($D$)-monomer ($M$)**
+**3) tetramer ($T_4$)-dimer ($D$)-monomer ($M$)**
 
-```
-T₄ ⇌ 2D ⇌ 4M        (Kd1 for T₄→D , Kd2 for D→M )
-```
+$$
+T_4\rightleftharpoons 2\,D \qquad\qquad K_{d1}=\dfrac{[D]^2}{[T_4]}
+$$
+
+$$
+D\rightleftharpoons 2\,M \qquad\qquad K_{d2}=\dfrac{[M]^2}{[D]}
+$$
 
 ---
-1) \\
-\[
-D\rightleftharpoons 2\,M \;\;\;\;K_d=\frac{[M]^2}{[D]}
-\]
- 
-2)\\
-\[
-T_3\rightleftharpoons 3\,M \;\;\;\;K_d=\frac{[M]^3}{[T_3]},\;\;\;\;\;K_d^E = \frac{2}{\sqrt{3}}\sqrt{K_d}\]
 
-
-3) \\
-\[
-T_4\rightleftharpoons 2\,D \;\;\;\;K_{d1}=\frac{[D]^2}{[T_4]}
-\]
-\[
-D\rightleftharpoons 2\,M \;\;\;\;K_{d2}=\frac{[M]^2}{[D]}
-\]
 ## Parameters
 
 | Parameter | Description |
 |-----------|-------------|
-| Kd | Dissociation constant for the monomer–oligomer equilibrium (nM); for the trimer case this is an effective Kd in nM units|
-| Kd1 | Dissociation constant for the tetramer ($T_4$)-dimer ($D$) step (nM) |
-| Kd2 | Dissociation constant for the dimer ($D$)-monomer ($M$) step (nM) |
-| *f* | Labeling efficiency (fraction of molecules carrying a fluorescent label) |
-| CL | Concentration of labeled protein in terms of the highest oligomer (nM) |
+| $K_d$ | Dissociation constant for the monomer–oligomer equilibrium (nM); for the trimer case this is an effective Kd in nM units, reported as $K_d^{E}$ |
+| $K_{d1}$ | Dissociation constant for the tetramer ($T_4$)-dimer ($D$) step (nM) |
+| $K_{d2}$ | Dissociation constant for the dimer ($D$)-monomer ($M$) step (nM) |
+| $f$ | Labeling efficiency (fraction of molecules carrying a fluorescent label) |
+| $\tilde{C}_L$ | Concentration of labeled protein in terms of the highest oligomer (nM) |
 | Conc. range | Total protein concentration in terms of the highest oligomer range for the simulation (nM) |
 
 The tool outputs:
@@ -97,7 +85,7 @@ The app will open automatically in your browser at `http://localhost:8501`.
 ## Usage
 
 1. Select an **equilibrium model** from the sidebar dropdown.
-2. Enter the dissociation constant(s) and experimental parameters (*f*, CL).
+2. Enter the dissociation constant(s) and experimental parameters (*f*, $\tilde{C}_L$).
 3. Set the **concentration range** to match the span of your titration experiment.
 4. Click **Run Simulation** to update the plots.
 5. Use **Download CSV** to export the simulated curves.
