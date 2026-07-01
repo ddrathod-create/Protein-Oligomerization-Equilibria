@@ -12,7 +12,7 @@ FCS measures fluctuations in fluorescence intensity as labeled molecules diffuse
 
 A key complication is that the autocorrelation decay of a mixture of oligomeric species is experimentally indistinguishable from that of a single species. The measured quantity is therefore an apparent diffusion time (τₐₚₚ) that reflects the weighted average of all species present, where the weighting depends on both the concentrations and relative brightnesses of each species. Because larger oligomers carry more fluorescent labels and contribute more strongly to the autocorrelation signal, simple intuitive interpretations of τₐₚₚ can be seriously misleading without a proper mathematical framework.
 
-This tool is based on a rigorous mathematical treatment that establishes analytical relationships between the experimentally measured τₐₚₚ values and the thermodynamic parameters governing protein oligomerization, including dissociation equilibrium constants for three different oligomerization cases: dimer-monomer, trimer-monomer, and tetramer-dimer-monomer [1]. It computes the predicted **normalized apparent diffusion time** τₙ = τₐₚₚ / τₘ as a function of total protein concentration, given user-specified dissociation constants (Kd) and experimental parameters, where τₘ is the diffusion time of the intact oligomeric species of stoichiometry m.
+This tool is based on a rigorous mathematical treatment that establishes analytical relationships between the experimentally measured τₐₚₚ values and the thermodynamic parameters governing protein oligomerization, including dissociation equilibrium constants for three different oligomerization cases: dimer-monomer, trimer-monomer, and tetramer-dimer-monomer [1]. It computes the predicted **normalized apparent diffusion time** τₙ = τₐₚₚ / τₘ as a function of total protein concentration, given user-specified dissociation constants ($K_d$) and experimental parameters, where τₘ is the diffusion time of the intact oligomeric species of stoichiometry m.
 
 ---
 
@@ -27,23 +27,23 @@ This webapp is based on the `proteinequilibriafn.py` file, maintaining all the o
 **1) dimer ($D$)-monomer ($M$)**
 
 $$
-D\rightleftharpoons 2\,M \qquad\qquad K_d=\dfrac{[M]^2}{[D]}
+D\rightleftharpoons 2M \qquad\qquad K_d=\dfrac{[M]^2}{[D]}
 $$
 
 **2) trimer ($T_3$)-monomer ($M$)**
 
 $$
-T_3\rightleftharpoons 3\,M \qquad\qquad K_d=\dfrac{[M]^3}{[T_3]}\, ,\qquad\qquad K_d^{E} = \dfrac{2}{\sqrt{3}}\sqrt{K_d}
+T_3\rightleftharpoons 3M \qquad\qquad K_d=\dfrac{[M]^3}{[T_3]}\, ,\qquad\qquad K_d^{E} = \dfrac{2}{\sqrt{3}}\sqrt{K_d}
 $$
 
 **3) tetramer ($T_4$)-dimer ($D$)-monomer ($M$)**
 
 $$
-T_4\rightleftharpoons 2\,D \qquad\qquad K_{d1}=\dfrac{[D]^2}{[T_4]}
+T_4\rightleftharpoons 2D \qquad\qquad K_{d1}=\dfrac{[D]^2}{[T_4]}
 $$
 
 $$
-D\rightleftharpoons 2\,M \qquad\qquad K_{d2}=\dfrac{[M]^2}{[D]}
+D\rightleftharpoons 2\M \qquad\qquad K_{d2}=\dfrac{[M]^2}{[D]}
 $$
 
 ---
@@ -52,7 +52,7 @@ $$
 
 | Parameter | Description |
 |-----------|-------------|
-| $K_d$ | Dissociation constant for the monomer–oligomer equilibrium (nM); for the trimer case this is an effective Kd in nM units, reported as $K_d^{E}$ |
+| $K_d$ | Dissociation constant for the monomer–oligomer equilibrium (nM); for the trimer case this is an effective $K_d$ in nM units, reported as $K_d^{E}$ |
 | $K_{d1}$ | Dissociation constant for the tetramer ($T_4$)-dimer ($D$) step (nM) |
 | $K_{d2}$ | Dissociation constant for the dimer ($D$)-monomer ($M$) step (nM) |
 | $f$ | Labeling efficiency (fraction of molecules carrying a fluorescent label) |
