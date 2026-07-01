@@ -24,33 +24,49 @@ This webapp is based on the `proteinequilibriafn.py` file, maintaining all the o
 
 ## Equilibria Cases
 
-**Dimer-Monomer**
+**dimer ($D$)-monomer ($M$)**
 
 ```
 D ⇌ 2M        (Kd)
 ```
 
-**Trimer-Monomer**
+**trimer ($T_3$)-monomer ($M$)**
 
 ```
 T ⇌ 3M        (Kd)
 ```
 
-**Tetramer-Dimer-Monomer**
+**tetramer ($T_4$)-dimer ($D$)-monomer ($M$)**
 
 ```
 T₄ ⇌ 2D ⇌ 4M        (Kd1 for T₄→D , Kd2 for D→M )
 ```
 
 ---
+1) \\
+\[
+D\rightleftharpoons 2\,M \;\;\;\;K_d=\frac{[M]^2}{[D]}
+\]
+ 
+2)\\
+\[
+T_3\rightleftharpoons 3\,M \;\;\;\;K_d=\frac{[M]^3}{[T_3]},\;\;\;\;\;K_d^E = \frac{2}{\sqrt{3}}\sqrt{K_d}\]
 
+
+3) \\
+\[
+T_4\rightleftharpoons 2\,D \;\;\;\;K_{d1}=\frac{[D]^2}{[T_4]}
+\]
+\[
+D\rightleftharpoons 2\,M \;\;\;\;K_{d2}=\frac{[M]^2}{[D]}
+\]
 ## Parameters
 
 | Parameter | Description |
 |-----------|-------------|
 | Kd | Dissociation constant for the monomer–oligomer equilibrium (nM); for the trimer case this is an effective Kd in nM units|
-| Kd1 | Dissociation constant for the dimer-to-tetramer step (nM) |
-| Kd2 | Dissociation constant for the monomer-to-dimer step (nM) |
+| Kd1 | Dissociation constant for the tetramer ($T_4$)-dimer ($D$) step (nM) |
+| Kd2 | Dissociation constant for the dimer ($D$)-monomer ($M$) step (nM) |
 | *f* | Labeling efficiency (fraction of molecules carrying a fluorescent label) |
 | CL | Concentration of labeled protein in terms of the highest oligomer (nM) |
 | Conc. range | Total protein concentration in terms of the highest oligomer range for the simulation (nM) |
