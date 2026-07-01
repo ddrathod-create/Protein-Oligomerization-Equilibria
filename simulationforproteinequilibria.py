@@ -279,11 +279,6 @@ section[data-testid="stSidebar"] .katex {
 section[data-testid="stSidebar"] .katex-display {
     margin: 2px 0 12px 0 !important;
     text-align: left !important;
-    background: #1c1c33;
-    border: 1px solid #33335a;
-    border-radius: 8px;
-    padding: 8px 12px !important;
-    overflow-x: auto;
 }
 .eq-caption {
     font-size: 0.92rem !important;
@@ -293,6 +288,20 @@ section[data-testid="stSidebar"] .katex-display {
     display: block;
     margin: -2px 0 8px 2px !important;
     font-family: 'Plus Jakarta Sans', sans-serif !important;
+}
+
+/* ── Parameter symbols (Kd, f, C̃L) — bold, uniform off-white, incl. sub/sup ── */
+.param-symbol,
+.param-symbol sub,
+.param-symbol sup {
+    color: #f2f2f9 !important;
+    font-weight: 700 !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+}
+.param-unit {
+    color: #8888b0 !important;
+    font-weight: 400 !important;
+    font-size: 0.85em;
 }
 
 /* ── Run button ── */
@@ -571,39 +580,60 @@ with st.sidebar:
     unit_word = {"Dimer": "dimers", "Trimer": "trimers", "Tetramer": "tetramers"}[model]
 
     if model == "Tetramer":
-        st.markdown("<span class='sidebar-input-label'>K<sub>d1</sub> (nM)</span>", unsafe_allow_html=True)
+        st.markdown(
+            "<span class='sidebar-input-label'>"
+            "<span class='param-symbol'>K<sub>d1</sub></span> <span class='param-unit'>(nM)</span>"
+            "</span>", unsafe_allow_html=True)
+        st.markdown("<span class='eq-caption'>dissociation constant, tetramer ⇌ dimer step</span>", unsafe_allow_html=True)
         KD1 = st.number_input("Kd1", label_visibility="collapsed",
                                min_value=1e-6, max_value=1e9, value=100.0, step=10.0, format="%.4g")
         st.latex(r"K_{d1} = \dfrac{[D]^2}{[T_4]}")
 
-        st.markdown("<span class='sidebar-input-label'>K<sub>d2</sub> (nM)</span>", unsafe_allow_html=True)
+        st.markdown(
+            "<span class='sidebar-input-label'>"
+            "<span class='param-symbol'>K<sub>d2</sub></span> <span class='param-unit'>(nM)</span>"
+            "</span>", unsafe_allow_html=True)
+        st.markdown("<span class='eq-caption'>dissociation constant, dimer ⇌ monomer step</span>", unsafe_allow_html=True)
         KD2 = st.number_input("Kd2", label_visibility="collapsed",
                                min_value=1e-6, max_value=1e9, value=10.0, step=10.0, format="%.4g")
         st.latex(r"K_{d2} = \dfrac{[M]^2}{[D]}")
     elif model == "Trimer":
-        st.markdown("<span class='sidebar-input-label'>K<sub>d</sub><sup>E</sup> (nM)</span>", unsafe_allow_html=True)
+        st.markdown(
+            "<span class='sidebar-input-label'>"
+            "<span class='param-symbol'>K<sub>d</sub><sup>E</sup></span> <span class='param-unit'>(nM)</span>"
+            "</span>", unsafe_allow_html=True)
+        st.markdown("<span class='eq-caption'>effective dissociation constant, trimer ⇌ monomer equilibrium</span>", unsafe_allow_html=True)
         KD1 = st.number_input("Kd", label_visibility="collapsed",
                                min_value=1e-6, max_value=1e9, value=100.0, step=10.0, format="%.4g")
         st.latex(r"K_d = \dfrac{[M]^3}{[T_3]}")
         st.latex(r"K_d^{E} = \dfrac{2}{\sqrt{3}}\sqrt{K_d}")
         KD2 = None
     else:
-        st.markdown("<span class='sidebar-input-label'>K<sub>d</sub> (nM)</span>", unsafe_allow_html=True)
+        st.markdown(
+            "<span class='sidebar-input-label'>"
+            "<span class='param-symbol'>K<sub>d</sub></span> <span class='param-unit'>(nM)</span>"
+            "</span>", unsafe_allow_html=True)
+        st.markdown("<span class='eq-caption'>dissociation constant, dimer ⇌ monomer equilibrium</span>", unsafe_allow_html=True)
         KD1 = st.number_input("Kd", label_visibility="collapsed",
                                min_value=1e-6, max_value=1e9, value=100.0, step=10.0, format="%.4g")
         st.latex(r"K_d = \dfrac{[M]^2}{[D]}")
         KD2 = None
 
-    st.markdown("<span class='sidebar-input-label'>f</span>", unsafe_allow_html=True)
+    st.markdown(
+        "<span class='sidebar-input-label'><span class='param-symbol'>f</span></span>",
+        unsafe_allow_html=True)
     st.markdown("<span class='eq-caption'>labeling efficiency</span>", unsafe_allow_html=True)
     f = st.number_input("f", label_visibility="collapsed",
                         min_value=0.0, max_value=1.0, value=0.5, step=0.05, format="%.2f")
 
-    st.markdown("<span class='sidebar-input-label'>Ĉ<sub>L</sub> (nM)</span>", unsafe_allow_html=True)
+    st.markdown(
+        "<span class='sidebar-input-label'>"
+        "<span class='param-symbol'>C\u0303<sub>L</sub></span> <span class='param-unit'>(nM)</span>"
+        "</span>", unsafe_allow_html=True)
     st.markdown(f"<span class='eq-caption'>labeled protein concentration (as {unit_word})</span>", unsafe_allow_html=True)
     C_l = st.number_input("CL", label_visibility="collapsed",
                            min_value=0.0, max_value=1e6, value=1.0, step=0.1, format="%.4g")
-    st.latex(rf"\hat{{C}}_L = {n}\,C_L")
+    st.latex(rf"\widetilde{{C}}_L = {n}\,C_L")
 
     st.divider()
     st.markdown("<span class='sidebar-label' style='margin-bottom:0;'>CONC. RANGE (nM)</span>", unsafe_allow_html=True)
