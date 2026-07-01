@@ -10,7 +10,7 @@ import pandas as pd
 
 st.set_page_config(
     page_title="FCS-Protein Oligomerization Simulator",
-    page_icon="🔬",
+    page_icon="confocal-vol.png",
     layout="wide",
 )
 
