@@ -280,7 +280,7 @@ section[data-testid="stSidebar"] .katex-display {
     margin: 8px 0 14px 0 !important;
     text-align: left !important;
 }
-/* Tighten the gap Streamlit adds between two stacked st.latex() blocks */
+
 section[data-testid="stSidebar"] .element-container:has(> .stMarkdown .katex-display) + .element-container:has(> .stMarkdown .katex-display) {
     margin-top: -10px !important;
 }
@@ -318,13 +318,13 @@ section[data-testid="stSidebar"] .element-container:has(> .stMarkdown .katex-dis
 .param-symbol sup {
     color: #f2f2f9 !important;
     font-weight: 400 !important;
-    font-size: 1.00rem !important;
+    font-size: 0.95rem !important;
     font-family: 'Plus Jakarta Sans', sans-serif !important;
 }
 .param-unit {
     color: #f2f2f9 !important;
     font-weight: 400 !important;
-    font-size: 1.00rem !important;
+    font-size: 0.95rem !important;
 }
 
 /* ── Run button ── */
@@ -668,7 +668,7 @@ with st.sidebar:
         "</div>", unsafe_allow_html=True)
     C_l = st.number_input("CL", label_visibility="collapsed",
                            min_value=0.0, max_value=1e6, value=1.0, step=0.1, format="%.4g")
-    st.latex(rf"\widetilde{{C}}_L = {n}\,C_L")
+    
 
     st.divider()
     st.markdown("<span class='sidebar-label' style='margin-bottom:0;'>CONC. RANGE (nM)</span>", unsafe_allow_html=True)
