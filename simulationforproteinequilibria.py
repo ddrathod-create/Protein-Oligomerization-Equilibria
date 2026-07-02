@@ -629,7 +629,7 @@ with st.sidebar:
             "<span class='sidebar-input-label'>"
             "<span class='param-symbol'>K<sub>d1</sub></span> <span class='param-unit'>(nM)</span>"
             "</span>"
-            "<span class='eq-caption'>dissociation constant, tetramer ⇌ dimer step</span>"
+            "<span class='eq-caption'>(equilibrium dissociation constant)</span>"
             "</div>", unsafe_allow_html=True)
         KD1 = st.number_input("Kd1", label_visibility="collapsed",
                                min_value=1e-6, max_value=1e9, value=100.0, step=10.0, format="%.4g")
@@ -640,7 +640,7 @@ with st.sidebar:
             "<span class='sidebar-input-label'>"
             "<span class='param-symbol'>K<sub>d2</sub></span> <span class='param-unit'>(nM)</span>"
             "</span>"
-            "<span class='eq-caption'>dissociation constant, dimer ⇌ monomer step</span>"
+            "<span class='eq-caption'>(equilibrium dissociation constant)</span>"
             "</div>", unsafe_allow_html=True)
         KD2 = st.number_input("Kd2", label_visibility="collapsed",
                                min_value=1e-6, max_value=1e9, value=10.0, step=10.0, format="%.4g")
@@ -651,7 +651,7 @@ with st.sidebar:
             "<span class='sidebar-input-label'>"
             "<span class='param-symbol'>K<sub>d</sub><sup>E</sup></span> <span class='param-unit'>(nM)</span>"
             "</span>"
-            "<span class='eq-caption'>(effective dissociation constant)</span>"
+            "<span class='eq-caption'>(effective equilibrium dissociation constant)</span>"
             "</div>", unsafe_allow_html=True)
         KD1 = st.number_input("Kd", label_visibility="collapsed",
                                min_value=1e-6, max_value=1e9, value=100.0, step=10.0, format="%.4g")
