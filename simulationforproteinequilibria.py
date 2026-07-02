@@ -3,13 +3,10 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 import pandas as pd
-from pathlib import Path
-
-ICON_PATH = Path(__file__).parent / "icons" / "confocal-vol.png"
 
 st.set_page_config(
     page_title="FCS-Protein Oligomerization Simulator",
-    page_icon=str(ICON_PATH) if ICON_PATH.exists() else "🔬",
+    page_icon="icons/confocal-vol.png",
     layout="wide",
 )
 
@@ -283,12 +280,25 @@ section[data-testid="stSidebar"] .katex-display {
     overflow-x: auto !important;
     padding-top: 8px !important;
 }
-/* Force overflow visible on every nested KaTeX span so tall elements
-   (exponents, radicals, fraction numerators) never get clipped */
+/* Keep the *containers* around each equation from clipping tall glyphs
+   (exponents, fraction numerators) — but stop at .katex-display/.katex
+   themselves. We deliberately do NOT cascade overflow:visible into every
+   descendant (".katex *"): KaTeX relies on overflow:hidden internally
+   (e.g. the ".hide-tail" span used to size the stretchy sqrt/radical bar)
+   to clip its radical glyph down to the correct width. Forcing that to
+   visible makes sqrt() bars render far wider than intended and bleed
+   into neighboring content (this was the cause of the stray horizontal
+   line cutting across the Kd^E equation). */
 section[data-testid="stSidebar"] .katex-display,
-section[data-testid="stSidebar"] .katex-display *,
-section[data-testid="stSidebar"] .katex,
-section[data-testid="stSidebar"] .katex * {
+section[data-testid="stSidebar"] .katex {
+    overflow: visible !important;
+}
+/* The Streamlit wrappers around each st.latex()/st.markdown() call can
+   also clip tall content — give those overflow:visible too. */
+section[data-testid="stSidebar"] .element-container,
+section[data-testid="stSidebar"] [data-testid="stElementContainer"],
+section[data-testid="stSidebar"] [data-testid="stMarkdownContainer"],
+section[data-testid="stSidebar"] .stMarkdown {
     overflow: visible !important;
 }
 
@@ -672,7 +682,7 @@ with st.sidebar:
         KD1 = st.number_input("Kd", label_visibility="collapsed",
                                min_value=1e-6, max_value=1e9, value=100.0, step=10.0, format="%.4g")
         st.latex(r"K_d = \dfrac{[M]^3}{[T_3]}")
-        st.latex(r"K_d^{E} = \dfrac{2}{3}\sqrt{3K_d}")
+        st.latex(r"K_d^{E} = \dfrac{2}{\sqrt{3}}\sqrt{K_d}")
         KD2 = None
     else:
         st.markdown(
