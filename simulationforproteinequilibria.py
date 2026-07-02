@@ -669,7 +669,7 @@ with st.sidebar:
         KD1 = st.number_input("Kd", label_visibility="collapsed",
                                min_value=1e-6, max_value=1e9, value=100.0, step=10.0, format="%.4g")
         st.latex(r"K_d = \dfrac{[M]^3}{[T_3]}")
-        st.latex(r"K_d^{E} = \dfrac{2}{\sqrt{3}}\;\sqrt{K_d}")
+        st.latex(r"K_d^{E} = \dfrac{2}{\sqrt{3\vphantom{K_d}}}\;\sqrt{K_d}")
         KD2 = None
     else:
         st.markdown(
