@@ -1,6 +1,6 @@
 # FCS-Protein Oligomerization Simulator
 
-An interactive web tool for simulating fluorescence correlation spectroscopy (FCS) titration curves for three oligomerization equilibria: dimer-monomer, trimer-monomer, and tetramer-dimer-monomer.
+An interactive web tool for simulating fluorescence correlation spectroscopy (FCS) titration curves for three oligomerization equilibria mechanisms: dimer-monomer, trimer-monomer, and tetramer-dimer-monomer.
 
 > *This tool is intended to facilitate the implementation of quantitative FCS-based oligomerization studies and to promote the use of physically accurate binding models over empirical approximations that may result in inaccurate or misleading parameter estimates.*
 
@@ -22,7 +22,7 @@ This webapp is based on the `fcs-protein-equilibria-fn.py` file, maintaining all
 
 ---
 
-## Equilibria Cases
+## Dissociation Models
 
 **1) dimer ($D$)-monomer ($M$)**
 
@@ -56,8 +56,8 @@ $$
 | $K_{d1}$ | Dissociation constant for the tetramer ($T_4$)-dimer ($D$) step (nM) |
 | $K_{d2}$ | Dissociation constant for the dimer ($D$)-monomer ($M$) step (nM) |
 | $f$ | Labeling efficiency |
-| $\tilde{C}_L$ | Concentration of labeled protein expressed as the highest oligomer (nM) (dimer/trimer/tetramer) |
-| Conc. range | Total protein concentration expressed as the highest oligomer range for the simulation (nM) (dimer/trimer/tetramer) |
+| $\tilde{C}_L$ | Concentration of labeled protein expressed in terms of oligomers (nM) |
+| Conc. range | Total protein concentration range, expressed in terms oligomers (nM) |
 
 The tool outputs:
 - **Upper panel:** τₐₚₚ / τₘ vs. total protein concentration (log scale), with a secondary *x*-axis showing total monomer concentration
