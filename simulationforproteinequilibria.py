@@ -3,6 +3,7 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 import pandas as pd
+import io
 
 st.set_page_config(
     page_title="FCS-Protein Oligomerization Simulator",
@@ -827,7 +828,15 @@ plt.close(fig)
 df_data = {"Total Protein Concentration (nM)": C, "normalized tau_app": tau}
 df_data.update(species)
 df = pd.DataFrame(df_data)
-csv = df.to_csv(index=False).encode("utf-8")
+species_cols = list(species.keys())          # e.g. ["Monomer", "Dimer", "Tetramer"]
+n_species = len(species_cols)
+group_row  = ["", ""] + ["Fractional Concentrations"] + [""] * (n_species - 1)
+header_row = ["Total Protein Concentration (nM)", "normalized tau_app"] + species_cols
+buf = io.StringIO()
+buf.write(",".join(group_row) + "\n")
+buf.write(",".join(header_row) + "\n")
+df.to_csv(buf, index=False, header=False)
+csv = buf.getvalue().encode("utf-8")
 st.download_button(
     label="Download CSV",
     data=csv,
