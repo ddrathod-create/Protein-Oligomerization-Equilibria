@@ -832,7 +832,7 @@ species_cols = list(species.keys())
 n_species = len(species_cols)
 df.insert(2, "", "")
 group_row  = ["", "", ""] + ["Fractional Concentrations"] + [""] * (n_species - 1)
-header_row = ["Total Protein Concentration (nM)", "normalized tau_app", ""] + species_cols
+header_row = ["Total Protein Concentration (nM)", "Normalized tau_app", ""] + species_cols
 buf = io.StringIO()
 buf.write(",".join(group_row) + "\n")
 buf.write(",".join(header_row) + "\n")
